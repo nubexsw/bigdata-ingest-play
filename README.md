@@ -128,7 +128,11 @@ kafka-consumer-groups --bootstrap-server localhost:9092 --list
 Describe the consumer group:
 kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group my-first-application
 
+Reset offsets:
 
+kafka-consumer-groups --bootstrap-server localhost:9092 --group my-first-application --reset-offsets --to-earliest --topic third_topic --dry-run
+
+kafka-consumer-groups --bootstrap-server localhost:9092 --group my-first-application --reset-offsets --to-earliest --topic third_topic --execute
 
 Extra Important options you can set (advanced):
 --from-beginning
