@@ -100,4 +100,7 @@ Consumer:
 kafka-console-consumer --bootstrap-server localhost:9092 --topic newtopic 
 
 kafka-console-consumer --consumer.config playground.config --bootstrap-server localhost:9092 --topic newtopic 
- 
+
+Consuming from beginnig:
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic newtopic --from-beginning
