@@ -119,6 +119,17 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic third_topic --g
 
 Having other consumer in another group: kafka-console-consumer --bootstrap-server localhost:9092 --topic third_topic --group my-second-application --from-beginning
 
+Checking the consumer groups:
+
+List the consumer groups created:
+kafka-consumer-groups --command-config playground.config --bootstrap-server localhost:9092 --list
+kafka-consumer-groups --bootstrap-server localhost:9092 --list
+
+Describe the consumer group:
+kafka-consumer-groups --bootstrap-server localhost:9092 --describe --group my-first-application
+
+
+
 Extra Important options you can set (advanced):
 --from-beginning
 
