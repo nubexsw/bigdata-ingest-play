@@ -104,3 +104,42 @@ kafka-console-consumer --consumer.config playground.config --bootstrap-server lo
 Consuming from beginnig:
 
 kafka-console-consumer --bootstrap-server localhost:9092 --topic newtopic --from-beginning
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic newtopic --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --formatter kafka.tools.DefaultMessageFormatter --from-beginning
+
+Consuming int consumer groups:
+
+Have a topic called third_topic with 3 partitions.
+Having a producer producing in round robing (1 message to each partition): kafka-console-producer --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic third_topic 
+Having 1 to 3 consumers in the same group: my-first-application. This makes that each consumer consumes in message from one partition each of them.
+
+kafka-console-consumer --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
+kafka-console-consumer --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
+kafka-console-consumer --bootstrap-server localhost:9092 --topic third_topic --group my-first-application
+
+Having other consumer in another group: kafka-console-consumer --bootstrap-server localhost:9092 --topic third_topic --group my-second-application --from-beginning
+
+Extra Important options you can set (advanced):
+--from-beginning
+
+We won't repeat this one enough. To read all historical messages
+
+--formatter
+
+To display messages in a particular format (example below to display keys)
+
+--consumer-property
+
+To pass in any consumer property, such as the allow.auto.create.topics setting
+
+--group
+
+By default a random consumer group ID is chosen, but you can override it with this option. See the demo in the Kafka Consumers in Group CLI Tutorial.
+
+--max-messages
+
+Number of messages to consume before exiting
+
+--partition
+
+If you want to only consume from a specific partition.
