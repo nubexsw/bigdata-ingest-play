@@ -179,6 +179,21 @@ Static Group Membership
 A memberID is assigned for each consumer but if the consumer leaves the group and rejoin, then it is assigned a different memberID.
 Specifying group.instance.id to the consumer it makes it unique. If the consumer leaves, the partition leaves unassigned and waits for session.timeout.ms for the consumer to rejoin again. If not, then the partition is reassigned to another consumer in the group. (this is useful when the consumer is stateful and mantains state and a cache).
 
+Consumer Auto Commit Offset
+
+Offsets are regularly commited
+Enable at-least once
+Property auto.commit.interval.ms=5000 for example
+Property enable.auto.commit=true for example
+In that example, kafka makes sure all messages are commited before 5 secs before doing the next poll
+commitSync() and commitAsync() called behind the scenes
+
+### Kafka Advanced
+
+https://learn.conduktor.io/kafka/advanced-kafka-consumer-with-java/
+
+
+
 
 
 
