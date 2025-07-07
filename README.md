@@ -158,3 +158,26 @@ Number of messages to consume before exiting
 --partition
 
 If you want to only consume from a specific partition.
+
+
+Consumer incremental
+
+Eager Rebalance: revoke all the customers and reasign them again, no sure that the consumers have the same partition
+Cooperative Rebalance: reassign a  small amount of partitions from one consumer to other (incremental rebalance)
+
+Rebalance Strategies in Kafka
+
+Using partition.assignment.strategy property
+RangeAssignor (Eager)
+RoundRobin (Eager)
+StickyAssignor (Eager)
+CooperativeStickyAssignor (Incremental)
+Default in Kafka: [RangeAssignor, CooperativeStickyAssignor]
+
+Static Group Membership
+
+
+
+
+
+
