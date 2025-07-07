@@ -176,6 +176,13 @@ Default in Kafka: [RangeAssignor, CooperativeStickyAssignor]
 
 Static Group Membership
 
+A memberID is assigned for each consumer but if the consumer leaves the group and rejoin, then it is assigned a different memberID.
+Specifying group.instance.id to the consumer it makes it unique. If the consumer leaves, the partition leaves unassigned and waits for session.timeout.ms for the consumer to rejoin again. If not, then the partition is reassigned to another consumer in the group. (this is useful when the consumer is stateful and mantains state and a cache).
+
+
+
+
+
 
 
 
